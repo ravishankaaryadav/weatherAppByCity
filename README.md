@@ -28,6 +28,12 @@ samples, guidance on mobile development, and a full API reference.
 * [Retrofit](https://pub.dev/packages/retrofit) - type conversion dio client generator
 * [Cached Network Image](https://pub.dev/packages/cached_network_image) - displays and caches images
 
+## Features      
+- Automatically acquire user current location
+- Searchable location
+- Offline weather information
+- Local DB store weather information   
+
 ## How to Run
 1. Create an account at [API ninjas](https://www.api-ninjas.com/).
 2. Then get your API key from https://www.api-ninjas.com/profile.
