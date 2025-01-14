@@ -52,7 +52,7 @@ class _CitySearchBoxState extends State<CitySearchBox> {
                   ),
                 ),
                 onSubmitted: (value) {
-                  weatherBloc.getWeatherofCity(city: value);
+                  weatherBloc.getWeatherofCity(city: value.trim());
                 },
               ),
             ),
@@ -75,7 +75,7 @@ class _CitySearchBoxState extends State<CitySearchBox> {
               onTap: () {
                 FocusScope.of(context).unfocus();
                 weatherBloc.getWeatherofCity(
-                    city: _searchController.text);
+                    city: _searchController.text.trim());
               },
             )
           ],

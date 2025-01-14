@@ -30,7 +30,7 @@ class WeatherPage extends StatelessWidget {
           child: BlocListener<WeatherBloc, WeatherState>(
             listener: (context, state) {
               if (state is WeatherNoInternetState) {
-                _showToastMessage(context, "No internet connection.");
+                _showToastMessage(context, "No internet connection");
               } else if (state is WeatherLocationPermissionState) {
                 _showToastMessage(context, state.locationMessage);
               } else if (state is WeatherErrorState) {

@@ -26,7 +26,7 @@ class WeatherBloc extends Cubit<WeatherState> {
     );
 
     _checkStatusOfInternet();
-    _getCurrentLocation();
+    _getCurrentLocationWeather();
   }
   bool isLoading = false;
   bool isCelsius = true;
@@ -39,8 +39,8 @@ class WeatherBloc extends Cubit<WeatherState> {
         isInternetConnected = false;
       } else if (ConnectivityResult.mobile == result ||
           ConnectivityResult.wifi == result) {
-        _getCurrentLocation();
         isInternetConnected = true;
+        _getCurrentLocationWeather();
       }
     });
   }
@@ -55,7 +55,7 @@ class WeatherBloc extends Cubit<WeatherState> {
       WeatherHiveData? weatherHiveData =
           _checkLocalDbHaveCityRecords(city); //get records by key
       if (weatherHiveData == null) {
-        emit(WeatherErrorState(errorMsg: 'No city found'));
+        emit(WeatherErrorState(errorMsg: 'No internet connection'));
         return;
       }
       _featchRecordsFromDb(weatherHiveData, city);
@@ -151,7 +151,7 @@ class WeatherBloc extends Cubit<WeatherState> {
     return tempData;
   }
 
-  Future<void> _getCurrentLocation() async {
+  Future<void> _getCurrentLocationWeather() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -193,10 +193,9 @@ class WeatherBloc extends Cubit<WeatherState> {
           _checkLocalDbHaveCityRecords(city); //get records by key
 
       if (weatherHiveData == null) {
-        emit(WeatherErrorState(errorMsg: 'no records found'));
         return;
       }
-      _featchRecordsFromDb(weatherHiveData, city);
+      _featchRecordsFromDb(weatherHiveData, city.trim());
       return;
     }
     emit(WeatherLoadingState());
