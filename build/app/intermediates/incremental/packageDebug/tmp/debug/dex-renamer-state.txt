@@ -1,0 +1,4 @@
+#Tue Jan 14 19:52:29 IST 2025
+base.0=/Users/admin/Documents/ravishankarWork/examples/weather/flutter_weather_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
