@@ -28,3 +28,23 @@ samples, guidance on mobile development, and a full API reference.
 * [Retrofit](https://pub.dev/packages/retrofit) - type conversion dio client generator
 * [Cached Network Image](https://pub.dev/packages/cached_network_image) - displays and caches images
 
+## How to Run
+1. Create an account at [API ninjas](https://www.api-ninjas.com/).
+2. Then get your API key from https://www.api-ninjas.com/profile.
+3. Clone the repo
+   ```sh
+   git clone https://github.com/ravishankaaryadav/weatherAppByCity.git
+   ```
+4. Install all the packages by typing
+   ```sh
+   flutter pub get
+   ```
+5. Navigate to **lib/constants/constant.dart** and paste your API key to the apiKey variable
+   ```dart
+   String weatherAPIKey = 'Paste Your API Key Here';
+   ```
+6. Run the App
+   ```dart
+   flutter run
+   ```
+
