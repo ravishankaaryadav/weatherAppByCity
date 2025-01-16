@@ -1,4 +1,4 @@
-import '../temperature.dart';
+import '../../../domain/entity/temperature.dart';
 import 'weather.dart';
 
 // Derived model class used in the UI
@@ -10,11 +10,11 @@ class WeatherData {
     required this.feelsLike,
     required this.humidity,
   });
-  final Temperature temp;
-  final Temperature minTemp;
-  final Temperature maxTemp;
-  final Temperature feelsLike;
-  final Temperature humidity;
+  final Temperature? temp;
+  final Temperature? minTemp;
+  final Temperature? maxTemp;
+  final Temperature? feelsLike;
+  final Temperature? humidity;
 
   factory WeatherData.from(
     Weather weather,

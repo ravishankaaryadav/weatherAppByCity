@@ -1,6 +1,4 @@
 import 'package:hive/hive.dart';
-
-import '../temperature.dart';
 part 'weather_hive_data.g.dart';
 
 @HiveType(typeId: 0)

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather_app/constants/app_theme.dart';
-
-import '../../application/textStyle.dart';
+import 'package:flutter_weather_app/application/app_theme.dart';
 import '../bloc/weather_bloc.dart';
 import '../bloc/weather_state.dart';
+import 'package:flutter_weather_app/application/text_style.dart';
 
 class WeatherSwitchTemp extends StatelessWidget {
   static const double boxWidth = 62.0;

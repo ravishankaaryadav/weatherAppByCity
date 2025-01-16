@@ -3,30 +3,36 @@ import 'dart:io';
 
 import 'package:flutter_weather_app/constants/constant.dart';
 
-import '../../../api/api_endpoint.dart';
-import '../domain/weather/weather.dart';
-import '../domain/weather/weather_data.dart';
-import 'api_exception.dart';
-import 'weather_repository.dart';
+import '../../../../api/api_exception.dart';
+import '../../../../api/weather_api_endpoint.dart';
+import '../../domain/repos/weather_repository.dart';
 import 'package:http/http.dart' as http;
+
+import '../model/weather/weather.dart';
+import '../model/weather/weather_data.dart';
 
 /// Weather Repository using the http client. Calls API methods and parses responses.
 class WeatherRepoImplementation extends WeatherRepository {
-  WeatherRepoImplementation({required this.api, required this.client});
-  final OpenWeatherMapAPI api;
-  final http.Client client;
+  WeatherRepoImplementation() {
+    api = WeatherApiEndPoint();
+    client = http.Client();
+  }
+  late WeatherApiEndPoint api;
+  late http.Client client;
 
   @override
   Future<WeatherData?> weatherCity(
       {required String lat, required String lon}) async {
-        
-    final weather = await getWeather(lat: lat, lon: lon);
+    final weather = await getWeather(lat: lat, lon: lon, endpoint: "weather");
     return WeatherData.from(weather);
   }
 
-  Future<Weather> getWeather({required String lat, required String lon}) =>
+  Future<Weather> getWeather(
+          {required String lat,
+          required String lon,
+          required String endpoint}) =>
       _getData(
-        uri: api.weather(lat: lat, lon: lon),
+        uri: api.weather(lat: lat, lon: lon, endpoint: endpoint),
         builder: (data) {
           return Weather.fromJson(data);
         },

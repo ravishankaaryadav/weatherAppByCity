@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../domain/weather/weather_data.dart';
+import '../../data/model/weather/weather_data.dart';
 import '../bloc/weather_bloc.dart';
 import '../bloc/weather_state.dart';
 
@@ -73,6 +72,8 @@ class CurrentWeatherContents extends StatelessWidget {
                   "https://cdn.weatherapi.com/weather/64x64/day/113.png", //Just to show icon for better UI.
               width: 20,
               height: 20,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Text(temp ?? "", style: textTheme.displayMedium),
             Text(highAndLow, style: textTheme.bodyMedium),

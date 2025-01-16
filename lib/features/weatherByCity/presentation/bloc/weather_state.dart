@@ -1,4 +1,4 @@
-import '../../domain/weather/weather_data.dart';
+import '../../data/model/weather/weather_data.dart';
 
 abstract class WeatherState {}
 

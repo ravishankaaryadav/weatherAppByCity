@@ -1,11 +1,11 @@
 /// Uri builder class for the OpenWeatherMap API
-class OpenWeatherMapAPI {
-  OpenWeatherMapAPI();
+class WeatherApiEndPoint {
+  WeatherApiEndPoint();
   static const String _apiBaseUrl = "api.api-ninjas.com";
   static const String _apiPath = "v1/";
 
-  Uri weather({required String lat, required String lon}) => _buildUri(
-        endpoint: "weather",
+  Uri weather({required String lat, required String lon, required String endpoint}) => _buildUri(
+        endpoint: endpoint ,
         parametersBuilder: () => cityQueryParameters(lat: lat, lon: lon),
       );
 

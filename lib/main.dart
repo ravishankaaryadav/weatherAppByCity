@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'features/weatherByCity/domain/weather/weather_hive_data.dart';
+import 'features/weatherByCity/data/model/weather/weather_hive_data.dart';
 import 'features/weatherByCity/presentation/pages/weather_city_page.dart';
 
 Future<void> main() async {
@@ -12,8 +12,6 @@ Future<void> main() async {
   // To intialise the hive database 
   await Hive.initFlutter(); 
   Hive.registerAdapter(WeatherHiveDataAdapter());
-
-
   runApp(const MyApp());
 }
 
