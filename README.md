@@ -17,6 +17,7 @@ This project is a starting point for a Flutter application.
 *  hive_flutter: ^1.1.0 for local DB
 *  hive: ^2.2.3
 *  geolocator: ^9.0.2 current GPS location
+*  Clean Architecture pattern
 * [BLoC Pattern](https://github.com/felangel/bloc) - state management
 * [Http](https://pub.dev/packages/dio) - Http client for Dart
 * [Retrofit](https://pub.dev/packages/retrofit) - type conversion dio client generator
