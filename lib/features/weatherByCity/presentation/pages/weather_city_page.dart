@@ -61,7 +61,7 @@ class WeatherPage extends StatelessWidget {
   void _showToastMessage(BuildContext context, String msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: 2),
         content: Text(msg),
       ),
     );

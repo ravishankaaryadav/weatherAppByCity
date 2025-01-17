@@ -17,12 +17,15 @@ class WeatherCityUsecases {
     //If No internet
     if (isInternetConnected == false) {
       WeatherHiveData? weatherHiveData = await fetchRecordsFromDb(city: city);
+      if (weatherHiveData == null) {
+        return null;
+      }
       return WeatherData(
-        temp: Temperature.celsius(weatherHiveData?.temp ?? 0),
-        minTemp: Temperature.celsius(weatherHiveData?.minTemp ?? 0),
-        maxTemp: Temperature.celsius(weatherHiveData?.maxTemp ?? 0),
-        humidity: Temperature.celsius(weatherHiveData?.humidity ?? 0),
-        feelsLike: Temperature.celsius(weatherHiveData?.feelsLike ?? 0),
+        temp: Temperature.celsius(weatherHiveData.temp ?? 0),
+        minTemp: Temperature.celsius(weatherHiveData.minTemp ?? 0),
+        maxTemp: Temperature.celsius(weatherHiveData.maxTemp ?? 0),
+        humidity: Temperature.celsius(weatherHiveData.humidity ?? 0),
+        feelsLike: Temperature.celsius(weatherHiveData.feelsLike ?? 0),
       );
     }
 
@@ -71,13 +74,13 @@ class WeatherCityUsecases {
         maxTemp: weatherResponse.maxTemp?.celsius,
         minTemp: weatherResponse.minTemp?.celsius,
         temp: weatherResponse.temp?.celsius); //creating object
-    await weatherdbBox.put(city, catModel); //putting object into hive box
+    await weatherdbBox.put(city.toLowerCase(), catModel); //putting object into hive box
   }
 
   Future<WeatherHiveData?> _checkLocalDbHaveCityRecords(String city) async {
     await Hive.openBox<WeatherHiveData>('weatherdb');
     Box<WeatherHiveData> weatherdbBox = Hive.box<WeatherHiveData>('weatherdb');
-    WeatherHiveData? weatherHiveData = weatherdbBox.get(city); //get by key
+    WeatherHiveData? weatherHiveData = weatherdbBox.get(city.toLowerCase()); //get by key
     return weatherHiveData;
   }
 }

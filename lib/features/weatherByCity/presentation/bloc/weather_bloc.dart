@@ -16,7 +16,6 @@ class WeatherBloc extends Cubit<WeatherState> {
   WeatherBloc() : super(WeatherInitialState()) {
     _weatherCityUsecases = WeatherCityUsecases(WeatherRepoImplementation());
     Connectivity().onConnectivityChanged.listen(internetStatusHandler);
-    _getCurrentLocationWeather();
   }
   bool isLoading = false;
   bool isCelsius = true;
@@ -51,7 +50,8 @@ class WeatherBloc extends Cubit<WeatherState> {
           .weatherCity(city: city, isInternetConnected: isInternetConnected);
       isLoading = false;
       if (weatherResponse == null) {
-        emit(WeatherErrorState(errorMsg: "No records"));
+        emit(WeatherErrorState(errorMsg: 'No records'));
+        return;
       }
       emit(WeatherCityState(weatherResponse, city));
     } on Exception catch (e) {
